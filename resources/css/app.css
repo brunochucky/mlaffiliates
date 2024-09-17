@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+input:disabled {
+  background-color: #e5e7eb !important; /* Tailwind's bg-gray-200 */
+  cursor: not-allowed; /* Optional: Add not-allowed cursor */
+  opacity: 1 !important; /* Ensure the opacity doesn't change */
+}
+/* Target the current page number by aria-current="page" */
+[aria-current="page"] .cursor-default {
+  font-weight: bold; /* Make the current page number bold */
+  color: #4f46e5; /* Optional: Indigo text color (Tailwind indigo-500) */
+}

@@ -22,7 +22,8 @@ class User extends Authenticatable
         'password',
         'affiliate_code',
         'cellphone',
-        'referrer_id', 
+        'referrer_id',
+        'conversion',
     ];
 
     /**

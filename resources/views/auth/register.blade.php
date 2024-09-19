@@ -51,7 +51,7 @@
         <!-- Affiliate -->
         <div class="mt-4">
             <x-input-label for="affiliate_code" :value="__('Affiliate Code')" />
-            <x-text-input id="affiliate_code" class="block mt-1 w-full" type="text" name="affiliate_code" :value="old('affiliate_code', request('uid'))" readonly disabled />
+            <x-text-input id="affiliate_code" class="block mt-1 w-full" type="text" name="affiliate_code" :value="old('affiliate_code', request('uid'))" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

@@ -12,20 +12,7 @@
                     {{ __("You're logged in!") }}
                 </div>
 
-                <div class="card-body p-6">
-                    <ul class="list-group list-unstyled">
-                        <li class="list-group-item">
-                            &#8226; <a href="{{ route('admin.users') }}">Manage Users</a>
-                        </li>
-                        <li class="list-group-item">
-                            &#8226; <a href="{{ route('admin.settings') }}">Site Settings</a>
-                        </li>
-                        <li class="list-group-item">
-                            &#8226; <a href="{{ route('admin.reports') }}">View Reports</a>
-                        </li>
-                    </ul>
 
-                </div>
             </div>
         </div>
     </div>

@@ -30,7 +30,16 @@ class ReportController extends Controller
         // Combine all multi-level referrals into a single list for display
         $multiLevelUsers = User::whereIn('id', $directUsers->merge($level2Users)->merge($level3Users)->merge($level4Users))->paginate(10, ['*'], 'multi_page');
 
+        // Fetch converted users from direct or multi-level referrals
+        $convertedUsers = User::where('conversion', true)
+            ->where(function ($query) use ($directUsers, $level2Users, $level3Users, $level4Users) {
+                $query->whereIn('id', $directUsers)
+                    ->orWhereIn('id', $level2Users)
+                    ->orWhereIn('id', $level3Users)
+                    ->orWhereIn('id', $level4Users);
+            })->paginate(10, ['*'], 'converted_page');
+
         // Return the view with all necessary variables
-        return view('dashboard.reports.indications', compact('users', 'multiLevelUsers', 'directUsers', 'level2Users', 'level3Users', 'level4Users'));
+        return view('dashboard.reports.indications', compact('users', 'multiLevelUsers', 'directUsers', 'level2Users', 'level3Users', 'level4Users', 'convertedUsers'));
     }
 }

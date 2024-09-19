@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,17 +40,16 @@ Route::middleware(['auth'])->group(function () {
         return redirect('/')->with('error', 'Access Denied');
     })->name('admin.dashboard');
 
-    Route::get('/admin/users', function () {
-        // Check if the user is an administrator
-        if (Auth::check() && Auth::user()->role === 'administrator') {
-            // Fetch total user count from the database
-            $totalUsers = \App\Models\User::count();
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
-            // Pass total user count to the view
-            return view('admin.users', ['totalUsers' => $totalUsers]);
-        }
-        return redirect('/')->with('error', 'Access Denied');
-    })->name('admin.users');
+    Route::get('/admin/users/{id}', [UserController::class, 'show'])->name('admin.users.show');
+
+    Route::get('/admin/users/{id}/convert', [UserController::class, 'convert'])->name('admin.users.convert');
+
+    Route::get('/admin/users/{id}/undo-convert', [UserController::class, 'undoConvert'])->name('admin.users.undoConvert');
+
+
+
 
     Route::get('/admin/settings', function () {
         // Check if the user is an administrator

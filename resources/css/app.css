@@ -13,3 +13,7 @@ input:disabled {
   font-weight: bold; /* Make the current page number bold */
   color: #4f46e5; /* Optional: Indigo text color (Tailwind indigo-500) */
 }
+
+.logo {
+  max-height: 60px;
+}
